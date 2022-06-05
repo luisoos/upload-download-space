@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/luisoos/upload-download-space/public/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Upload & Download Space</h1>
+    <p>Up- & download any files to share them. All files are going to be scanned for malware.</p>
+
+    <div class="row">
+        <div class="section col-lg upload-section">
+            <br>
+            <h3>Upload Section</h3>
+            <p>Select a file to upload:</p>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" name="uploadFile">
+                    </div>
+                    <button class="input-group-text" type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="section col-lg">
+            <br>
+            <h3>Download Section</h3>
+            <p>Click on an element to download it!</p>
+            <p class="sorting-status"></p>
+            <div class="buttons">
+                <form action="/download" method="get">
+                    <button type="submit" class="btn btn-secondary">Download all files</button>
+                </form>
+                <div id="button-div">
+                    <button class="changeSorting btn btn-secondary" onclick="changeSortingOldToNew()">Sort new to old files</button>
+                </div>
+            </div>
+            <br>
+            <div class="files row gy-5" id="files">
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/luisoos/upload-download-space/public/index.js"></script>
+
+</body>
+
+</html>

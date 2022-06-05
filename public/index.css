@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap');
+
+    body {
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        font-weight: 400;
+
+        text-align: center;
+
+        overflow-x: hidden;
+
+        background: #ffffff;
+        background: linear-gradient(180deg, rgba(166,223,220,0.19089642693014708) 2%, rgba(166,189,223,0.20210090872286413) 13%, rgba(255,0,189,0.04565833169205185) 38%, rgba(255,0,189,0.03885160900297616) 54%, rgba(255,0,189,0) 66%); 
+        background-repeat: no-repeat;
+    }
+
+    h1, h3 {
+        margin-top: 50px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+        font-weight: 800;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    @media screen and (max-width: 500px) {
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h3 {
+            font-size: 26px;
+        }
+
+    }
+
+    .upload-section form {
+        height: 38px;
+
+        margin-right: 5px;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .upload-section form button {
+        height: 38px;
+
+        margin: 0;
+        margin-left: 5px;
+    }
+
+    @media screen and (max-width: 500px) {
+
+        .upload-section form {
+            width: 95%;
+            
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+
+            flex-direction: column;
+        }
+
+        .upload-section form button {
+            width: 90px;
+            
+            margin-left: auto;
+            margin-right: auto;
+
+            padding: 16.5px;
+        }
+
+    }
+
+    .files {
+        width: 95%;
+
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        
+        display: flex;
+        flex-direction: row;
+
+        background: rgba( 255, 255, 255, 0.25 );
+        box-shadow: 0 0px 32px 0 rgba(88, 88, 88, 0.25);
+        backdrop-filter: blur( 5px );
+        -webkit-backdrop-filter: blur( 5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+    }
+
+    .file {
+        width: 134.833px;
+        height: 150px;
+
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 10px;
+        
+        display: flex;
+        flex-direction: column;
+        
+        word-wrap: break-word;
+        text-align: center;
+
+        border-radius: 5px;
+    }
+
+    .file:hover {
+        background-color: #eeeeee;
+        cursor: pointer;
+    }
+
+    .file svg {
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    span {
+        font-weight: 300;
+    }
+
+    gray {
+        color: #747474;
+    }
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 25px;
+    }
+
+    button {
+        margin: 5px;
+    }
+
+    .files a, .files a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .col {
+        margin: 10px;
+    }
+
+    .input-group {
+        width: 90%;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 800px) {
+
+        .input-group {
+            width: 500px;
+        }
+
+    }
+
+    @media screen and (min-width: 1000px) {
+
+        .input-group {
+            width: 500px;
+        }
+
+    }
