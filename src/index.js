@@ -1,6 +1,5 @@
 /* Importing packages */
 const fs = require('fs');
-const req = require('request')
 const express = require("express");
 const zip = require('express-zip');
 const fileUpload = require("express-fileupload");
