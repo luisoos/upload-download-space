@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap');
+
+    body {
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        font-weight: 400;
+
+        text-align: center;
+
+        overflow-x: hidden;
+
+        background: #ffffff;
+        background: linear-gradient(180deg, rgba(166,223,220,0.19089642693014708) 2%, rgba(166,189,223,0.20210090872286413) 13%, rgba(255,0,189,0.04565833169205185) 38%, rgba(255,0,189,0.03885160900297616) 54%, rgba(255,0,189,0) 66%); 
+        background-repeat: no-repeat;
+    }
+
+    h1, h3 {
+        margin-top: 50px;
+
+        padding-left: 10px;
+        padding-right: 10px;
+
+        font-weight: 800;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    @media screen and (max-width: 500px) {
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h3 {
+            font-size: 26px;
+        }
+
+    }
+
+    .upload-section form {
+        height: 38px;
+
+        margin-right: 5px;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .upload-section form button {
+        height: 38px;
+
+        margin: 0;
+        margin-left: 5px;
+    }
+
+    @media screen and (max-width: 500px) {
+
+        .upload-section form {
+            width: 95%;
+            
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+
+            flex-direction: column;
+        }
+
+        .upload-section form button {
+            width: 90px;
+            
+            margin-left: auto;
+            margin-right: auto;
+
+            padding: 16.5px;
+        }
+
+    }
+
+    .files {
+        width: 95%;
+
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        
+        display: flex;
+        flex-direction: row;
+
+        background: rgba( 255, 255, 255, 0.25 );
+        box-shadow: 0 0px 32px 0 rgba(88, 88, 88, 0.25);
+        backdrop-filter: blur( 5px );
+        -webkit-backdrop-filter: blur( 5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+    }
+
+    .file {
+        width: 134.833px;
+        height: 150px;
+
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 10px;
+        
+        display: flex;
+        flex-direction: column;
+        
+        word-wrap: break-word;
+        text-align: center;
+
+        border-radius: 5px;
+    }
+
+    .file:hover {
+        background-color: #eeeeee;
+        cursor: pointer;
+    }
+
+    .file svg {
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    span {
+        font-weight: 300;
+    }
+
+    gray {
+        color: #747474;
+    }
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 25px;
+    }
+
+    button {
+        margin: 5px;
+    }
+
+    .files a, .files a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .col {
+        margin: 10px;
+    }
+
+    .input-group {
+        width: 90%;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 800px) {
+
+        .input-group {
+            width: 500px;
+        }
+
+    }
+
+    @media screen and (min-width: 1000px) {
+
+        .input-group {
+            width: 500px;
+        }
+
+    }
+
+</style>
+
+<body>
+    <h1>Upload & Download Space</h1>
+    <p>Up- & download any files to share them. All files are going to be scanned for malware.</p>
+
+    <div class="row">
+        <div class="section col-lg upload-section">
+            <br>
+            <h3>Upload Section</h3>
+            <p>Select a file to upload:</p>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" name="uploadFile">
+                    </div>
+                    <button class="input-group-text" type="submit">Upload</button>
+            </form>
+        </div>
+
+        <div class="section col-lg">
+            <br>
+            <h3>Download Section</h3>
+            <p>Click on an element to download it!</p>
+            <p class="sorting-status"></p>
+            <div class="buttons">
+                <form action="/download" method="get">
+                    <button type="submit" class="btn btn-secondary">Download all files</button>
+                </form>
+                <div id="button-div">
+                    <button class="changeSorting btn btn-secondary" onclick="changeSortingOldToNew()">Sort new to old files</button>
+                </div>
+            </div>
+            <br>
+            <div class="files row gy-5" id="files">
+                
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        async function fetchFileNames() {
+            const response = await fetch('/uploadedFiles');
+            const names = await response.json();
+            return names;
+        }
+
+        fetchFileNames().then(names => {
+            const filesDiv = document.getElementById("files");
+            while (filesDiv.firstChild) {
+                filesDiv.removeChild(filesDiv.lastChild);
+            }
+
+            names.message.forEach(name => {
+                let fileName = name;
+                if (name.length > 35) {
+                    let nameParts = name.split(/\.(?=[^\.]+$)/)
+                    let fileNamePart = nameParts[0].substring(0, 30);
+                    fileName = `${fileNamePart}<gray>[...]</gray>.${nameParts[1]}`;
+                }
+                let html = `<div class="col" id="${fileName}"><a href="/downloadSingle/${fileName}"><div class="file"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/></svg><br><span id="filename">${fileName}</span></div></a></div>`;
+                filesDiv.insertAdjacentHTML("afterbegin", html);
+            })
+        });
+
+        function changeSortingOldToNew() {
+            const buttonDiv = document.getElementById("button-div");
+            buttonDiv.replaceChildren();
+            let html = `<button class="changeSorting btn btn-secondary" onclick="changeSortingNewToOld()">Sort new to old files</button>`;
+            buttonDiv.insertAdjacentHTML("beforeend", html);
+
+            fetchFileNames().then(names => {
+                const filesDiv = document.getElementById("files");
+                filesDiv.replaceChildren();
+
+                names.message.forEach(name => {
+                    let fileName = name;
+                    if (name.length > 35) {
+                        let nameParts = name.split(/\.(?=[^\.]+$)/)
+                        let fileNamePart = nameParts[0].substring(0, 30);
+                        fileName = `${fileNamePart}<gray>[...]</gray>.${nameParts[1]}`;
+                    }
+                    let html = `<div class="col" id="${fileName}"><a href="/downloadSingle/${fileName}"><div class="file"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/></svg><br><span id="filename">${fileName}</span></div></a></div>`;
+                    filesDiv.insertAdjacentHTML("beforeend", html);
+                })
+            });
+        }
+
+        function changeSortingNewToOld() {
+            const buttonDiv = document.getElementById("button-div");
+            buttonDiv.replaceChildren();
+            let html = `<button class="changeSorting btn btn-secondary" onclick="changeSortingOldToNew()">Sort old to new files</button>`;
+            buttonDiv.insertAdjacentHTML("beforeend", html);
+
+            fetchFileNames().then(names => {
+                const filesDiv = document.getElementById("files");
+                filesDiv.replaceChildren();
+
+                names.message.forEach(name => {
+                    let fileName = name;
+                    if (name.length > 35) {
+                        let nameParts = name.split(/\.(?=[^\.]+$)/)
+                        let fileNamePart = nameParts[0].substring(0, 30);
+                        fileName = `${fileNamePart}<gray>[...]</gray>.${nameParts[1]}`;
+                    }
+                    let html = `<div class="col" id="${fileName}"><a href="/downloadSingle/${fileName}"><div class="file"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/></svg><br><span id="filename">${fileName}</span></div></a></div>`;
+                    filesDiv.insertAdjacentHTML("afterbegin", html);
+                })
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
